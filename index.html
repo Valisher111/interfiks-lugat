@@ -279,6 +279,17 @@ const norm = s => String(s||"").normalize("NFC").toLowerCase()
   .replace(/[‘’ʻʼ'`´]/g,"").replace(/[-–—°\s]/g,"")
   .replace(/ё/g,"е");
 U.forEach(u => { u._k = norm(u.w) + "|" + norm(u.e) + "|" + norm(u.var||""); u._h = norm(u.w); });
+/* bir nechta ekvivalentli o‘zbek birliklari (masalan, “a (q); b (t)”) — har bir ekvivalent boshqa tildagi birlikka bog‘lanadi */
+const enByW = Object.create(null); U.forEach(u => { if(u.l==="en") enByW[u._h] = u.id; });
+U.forEach(u => {
+  if(u.l==="uz" && u.eid && /;/.test(u.e)){
+    const eqs = u.e.split(";").map(x=>x.trim()).map(x=>{
+      const m = /\((t|q)\)\s*$/.exec(x); const w = x.replace(/\((t|q)\)\s*$/,"").trim();
+      return {id: enByW[norm(w)], et: m ? m[1] : u.et};
+    }).filter(x=>x.id);
+    if(eqs.length>1) u.eqs = eqs;
+  }
+});
 
 function hl(w, v){
   const parts = String(w).split("-");
@@ -376,7 +387,11 @@ function renderDetail(){
   if(!u){ el.innerHTML = `<div class="placeholder">${t("pick")}</div>`; el.classList.remove("open"); return; }
   const other = u.eid && byId[u.eid];
   let eq;
-  if(other){
+  if(u.eqs){
+    eq = u.eqs.map(x=>{ const o=byId[x.id]; return `<div class="eqcard" style="margin-bottom:8px"><div><span class="lang ${o.l}" style="padding:2px 6px;margin-right:6px">${t("enL")}</span>
+           <span class="hw">${hl(o.w,o.v)}</span><div style="margin-top:6px">${eqBadge(x.et)}</div></div>
+           <button type="button" class="eqbtn" data-go="${o.id}">${t("open")} →</button></div>`; }).join("");
+  } else if(other){
     eq = `<div class="eqcard"><div><span class="lang ${other.l}" style="padding:2px 6px;margin-right:6px">${other.l==="uz"?t("uzL"):t("enL")}</span>
            <span class="hw">${hl(other.w,other.v)}</span><div style="margin-top:6px">${eqBadge(u.et)}</div></div>
            <button type="button" class="eqbtn" data-go="${other.id}">${t("open")} →</button></div>`;
