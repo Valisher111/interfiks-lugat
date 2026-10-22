@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interfiksli birliklar lug‘ati</title>
+<meta name="description" content="O‘zbek va ingliz tillaridagi interfiksli pedagogik birliklarning qiyosiy lug‘ati — elektron versiya (695 birlik).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f1; --panel:#ffffff; --ink:#1c2330; --muted:#5d6675; --faint:#8b93a1;
+  --line:#e3e1da; --accent:#0e6a6a; --accent-soft:#e3f1ef; --accent-ink:#0a4f4f;
+  --uz:#0e6a6a; --en:#7a3fa0; --uz-soft:#e3f1ef; --en-soft:#f1e8f7;
+  --mark:#f6d77a; --mark-ink:#5a4300; --shadow:0 1px 2px rgba(20,30,40,.06),0 4px 16px rgba(20,30,40,.05);
+  --r:12px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12161c; --panel:#1a2029; --ink:#e7eaf0; --muted:#a3abb8; --faint:#76808f;
+    --line:#2a323e; --accent:#4fc1b7; --accent-soft:#163331; --accent-ink:#8fe0d8;
+    --uz:#4fc1b7; --en:#c29be0; --uz-soft:#163331; --en-soft:#2a2036;
+    --mark:#6b5414; --mark-ink:#ffe7a3; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161c; --panel:#1a2029; --ink:#e7eaf0; --muted:#a3abb8; --faint:#76808f;
+  --line:#2a323e; --accent:#4fc1b7; --accent-soft:#163331; --accent-ink:#8fe0d8;
+  --uz:#4fc1b7; --en:#c29be0; --uz-soft:#163331; --en-soft:#2a2036;
+  --mark:#6b5414; --mark-ink:#ffe7a3; --shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+button,select,input{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+
+/* header */
+header.top{padding:28px 0 18px}
+.brand{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:700;font-size:clamp(24px,3.4vw,36px);line-height:1.15;margin:6px 0 6px;max-width:820px}
+.sub{color:var(--muted);max-width:820px;margin:0}
+.tools{display:flex;gap:8px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--panel);padding:3px}
+.seg button{border:0;background:transparent;padding:5px 12px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:999px;width:34px;height:34px;cursor:pointer;display:grid;place-items:center}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0 4px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow)}
+.stat b{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:26px;line-height:1.1}
+.stat span{font-size:12.5px;color:var(--muted)}
+.stat.uz b{color:var(--uz)} .stat.en b{color:var(--en)}
+
+/* tabs */
+nav.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:18px;overflow-x:auto}
+nav.tabs button{border:0;background:none;padding:10px 14px;cursor:pointer;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* toolbar */
+.toolbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line)}
+.searchrow{display:flex;gap:8px;flex-wrap:wrap}
+.search{flex:1 1 320px;position:relative}
+.search input{width:100%;padding:11px 14px 11px 40px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:15px;outline:none}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--faint)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.filters select{padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-size:13.5px;max-width:100%}
+.reset{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13.5px}
+.count{font-size:13px;color:var(--muted);margin-top:8px}
+
+/* layout */
+.main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:20px;padding:16px 0 40px;align-items:start}
+.list{display:flex;flex-direction:column;gap:6px;min-width:0}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;text-align:left;width:100%}
+.row:hover{border-color:var(--faint)}
+.row[aria-current="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.lang{font-size:11px;font-weight:700;letter-spacing:.05em;padding:3px 0;border-radius:6px;text-align:center}
+.lang.uz{background:var(--uz-soft);color:var(--uz)} .lang.en{background:var(--en-soft);color:var(--en)}
+.hw{font-family:"Source Serif 4",Georgia,serif;font-size:18px;font-weight:600;line-height:1.25;overflow-wrap:anywhere}
+.hw .sep{color:var(--faint);font-weight:400}
+.hw mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 1px}
+.eqline{font-size:13px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
+.chips{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.chip{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:2px 8px;color:var(--muted);white-space:nowrap}
+.more{margin:10px auto 0;display:block;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 18px;cursor:pointer;font-weight:600}
+.empty{padding:30px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:var(--r)}
+
+/* detail */
+.detail{position:sticky;top:calc(var(--tb,180px) + 16px);max-height:calc(100vh - var(--tb,180px) - 32px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.dhead{padding:20px 22px 14px;border-bottom:1px solid var(--line)}
+.dhead .hw{font-size:30px}
+.dmeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.dbody{padding:6px 22px 22px}
+.sec{padding:14px 0;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:0}
+.sec h3{margin:0 0 8px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:700}
+dl.kv{display:grid;grid-template-columns:minmax(120px,38%) 1fr;gap:6px 14px;margin:0}
+dl.kv dt{color:var(--muted);font-size:13.5px}
+dl.kv dd{margin:0;font-size:14px;overflow-wrap:anywhere}
+.eqcard{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.eqcard .hw{font-size:20px}
+.eqbtn{border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:999px;padding:5px 12px;cursor:pointer;font-weight:600;font-size:13px;white-space:nowrap}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px}
+.badge.t{background:var(--accent-soft);color:var(--accent-ink)}
+.badge.q{background:#fbeccc;color:#6d4b00}
+.badge.n{background:var(--line);color:var(--muted)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .badge.q{background:#3d3214;color:#f3d48a}}
+:root[data-theme="dark"] .badge.q{background:#3d3214;color:#f3d48a}
+blockquote{margin:0;padding:10px 14px;border-left:3px solid var(--accent);background:var(--bg);border-radius:0 8px 8px 0;font-family:"Source Serif 4",Georgia,serif;font-size:16px;line-height:1.55}
+.srcnote{font-size:12.5px;color:var(--muted);margin-top:6px;overflow-wrap:anywhere}
+.placeholder{padding:40px 24px;color:var(--muted);text-align:center}
+.closer{display:none}
+.copy{border:1px solid var(--line);background:transparent;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12.5px;color:var(--muted)}
+
+/* codes tab */
+.codes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px;padding:18px 0 40px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}
+.card h2{font-family:"Source Serif 4",Georgia,serif;font-size:20px;margin:0 0 10px}
+table.ct{width:100%;border-collapse:collapse;font-size:13.5px}
+table.ct td{padding:7px 6px;border-top:1px solid var(--line);vertical-align:top}
+table.ct td:first-child{font-weight:700;white-space:nowrap;color:var(--accent)}
+table.ct .ex{color:var(--muted);font-size:12.5px}
+table.ct .n{text-align:right;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.about{max-width:820px;padding:18px 0 40px}
+.about p,.about li{color:var(--ink)}
+.about .card{margin-bottom:16px}
+footer{border-top:1px solid var(--line);padding:18px 0 30px;color:var(--muted);font-size:13px}
+.hidden{display:none!important}
+
+@media (max-width:900px){
+  .main{grid-template-columns:1fr}
+  .detail{position:fixed;inset:0;max-height:none;border-radius:0;z-index:20;transform:translateY(100%);transition:transform .22s ease}
+  .detail.open{transform:none}
+  .closer{display:inline-flex;position:sticky;top:0;float:right;margin:10px 10px 0 0}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toolbar{top:0}
+}
+@media (max-width:520px){
+  .row{grid-template-columns:36px minmax(0,1fr)}
+  .row .chips{grid-column:2;justify-content:flex-start}
+  dl.kv{grid-template-columns:1fr}
+  dl.kv dt{margin-top:6px}
+  .dhead .hw{font-size:24px}
+}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <div class="brand">
+    <div>
+      <div class="eyebrow" data-i="eyebrow"></div>
+      <h1 data-i="title"></h1>
+      <p class="sub" data-i="subtitle"></p>
+    </div>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Til / Language">
+        <button type="button" data-lang="uz" aria-pressed="true">UZ</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="iconbtn" id="theme" aria-label="Theme" title="Tema">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="dict" aria-selected="true" data-i="tabDict"></button>
+    <button role="tab" data-tab="codes" aria-selected="false" data-i="tabCodes"></button>
+    <button role="tab" data-tab="about" aria-selected="false" data-i="tabAbout"></button>
+  </nav>
+</header>
+
+<section id="tab-dict">
+  <div class="toolbar">
+    <div class="wrap">
+      <div class="searchrow">
+        <label class="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" autocomplete="off" spellcheck="false">
+        </label>
+      </div>
+      <div class="filters">
+        <select id="fLang"></select>
+        <select id="fModel"></select>
+        <select id="fGroup"></select>
+        <select id="fRel"></select>
+        <select id="fEq"></select>
+        <button type="button" class="reset" id="reset" data-i="reset"></button>
+      </div>
+      <div class="count" id="count"></div>
+    </div>
+  </div>
+  <div class="wrap main">
+    <div class="list" id="list"></div>
+    <aside class="detail" id="detail" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section id="tab-codes" class="hidden"><div class="wrap codes" id="codes"></div></section>
+<section id="tab-about" class="hidden"><div class="wrap about" id="about"></div></section>
+
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+"use strict";
+const D = window.LUGAT;
+const U = D.units;
+const byId = Object.create(null); U.forEach(u => byId[u.id] = u);
+
+/* ---------- interface strings ---------- */
+const S = {
+ uz:{
+  eyebrow:"Dissertatsiya ilovasi · elektron versiya",
+  title:"O‘zbek va ingliz tillaridagi interfiksli pedagogik birliklarning qiyosiy lug‘ati",
+  subtitle:"Berdiyev S.S. “O‘zbek va ingliz tillarida pedagogika sohasida uchraydigan interfiks birliklarning leksik-semantik va pragmatik xususiyatlari” mavzusidagi PhD dissertatsiyasining 1-ilovasi asosida. Har bir birlik tadqiqot bazasidagi ma’lumotlar bilan kengaytirilgan.",
+  sUnits:"jami birlik", sUz:"o‘zbek tilida", sEn:"ingliz tilida", sPairs:"ekvivalent juft",
+  tabDict:"Lug‘at", tabCodes:"Kodlar va qisqartmalar", tabAbout:"Lug‘at haqida",
+  search:"Birlikni qidiring: pedagogik, psychology, yuzma-yuz…",
+  allLang:"Ikkala til", uzOnly:"Faqat o‘zbekcha", enOnly:"Faqat inglizcha",
+  allModel:"Barcha modellar", allGroup:"Barcha guruhlar", allRel:"Barcha munosabatlar", allEq:"Har qanday ekvivalentlik",
+  eqT:"To‘liq ekvivalent", eqQ:"Qisman ekvivalent", eqN:"Nol ekvivalent",
+  reset:"Tozalash", found:n=>`${n} ta birlik topildi`, more:n=>`Yana ko‘rsatish (${n})`,
+  none:"Hech narsa topilmadi. Qidiruv so‘zini qisqartirib ko‘ring.",
+  pick:"Batafsil ma’lumot uchun ro‘yxatdan birlikni tanlang.",
+  uzL:"O‘ZB", enL:"ING", uzName:"o‘zbek tili", enName:"ingliz tili",
+  secStruct:"Tuzilishi", secSem:"Semantikasi", secEq:"Boshqa tildagi ekvivalenti", secUse:"Qo‘llanishi", secSrc:"Manba",
+  model:"Model", formula:"Model formulasi", device:"Bog‘lovchi vosita", b1:"1-asos", b2:"2-asos", origin:"Kelib chiqishi", etym:"Izoh",
+  group:"Leksik-semantik guruh", rel:"Asoslararo munosabat", ped:"Pedagogika sohasiga aloqasi",
+  variants:"Matnlardagi yozilishlari", disc:"Kontekst gapining diskurs turi", freq:"Chastota", dist:"Manbalar bo‘yicha taqsimot",
+  corpus:"O‘zbek tili milliy korpusi", ctx:"Kontekst", src:"Lug‘atdagi manba ustuni", ctxsrc:"Kontekst manbasi",
+  open:"Ochish", noEq:"Ikkinchi tilda interfiksli ekvivalent qayd etilmagan.", trans:"Tarjima ekvivalenti (lug‘at manbasi bilan tasdiqlanmagan)",
+  appx:(p,n)=>`1-ilova, ${p}-qism, ${n}-qator`, copy:"Havolani nusxalash", copied:"Nusxalandi",
+  close:"Yopish", synNote:"Bu birlik juftdagi asosiy o‘zbek birligining ma’nodoshi. Uning inglizcha tarjimasi bazadagi quyidagi ingliz birligi bilan bir xil, bu ingliz birligi esa asosiy birlik bilan juftlangan.",
+  cModels:"Struktur-derivatsion modellar", cGroups:"Leksik-semantik guruhlar", cRel:"Asoslararo munosabat turlari",
+  cOrig:"Kelib chiqishi", cDisc:"Diskurs turlari", cSrc:"Manbalarning shartli qisqartmalari", cCount:"soni",
+  foot:"Ma’lumotlar dissertatsiyaning 1-ilovasi va tadqiqot bazasidan (Interfiksli_birliklar_bazasi.xlsx) olingan. Yangilangan sana:"
+ },
+ en:{
+  eyebrow:"Dissertation appendix · online edition",
+  title:"A Comparative Dictionary of Interfixed Pedagogical Units in Uzbek and English",
+  subtitle:"Based on Appendix 1 of S.S. Berdiyev’s PhD dissertation “Lexical-semantic and pragmatic features of interfixed units in the field of pedagogy in Uzbek and English”. Each entry is extended with data from the research database.",
+  sUnits:"units in total", sUz:"in Uzbek", sEn:"in English", sPairs:"equivalent pairs",
+  tabDict:"Dictionary", tabCodes:"Codes & abbreviations", tabAbout:"About",
+  search:"Search a unit: psychology, pedagogik, face-to-face…",
+  allLang:"Both languages", uzOnly:"Uzbek only", enOnly:"English only",
+  allModel:"All models", allGroup:"All groups", allRel:"All relations", allEq:"Any equivalence",
+  eqT:"Full equivalent", eqQ:"Partial equivalent", eqN:"Zero equivalent",
+  reset:"Clear", found:n=>`${n} units found`, more:n=>`Show more (${n})`,
+  none:"Nothing found. Try a shorter search term.",
+  pick:"Select a unit from the list to see its full entry.",
+  uzL:"UZB", enL:"ENG", uzName:"Uzbek", enName:"English",
+  secStruct:"Structure", secSem:"Semantics", secEq:"Equivalent in the other language", secUse:"Usage", secSrc:"Source",
+  model:"Model", formula:"Model formula", device:"Linking device", b1:"Base 1", b2:"Base 2", origin:"Origin", etym:"Note",
+  group:"Lexical-semantic group", rel:"Inter-base relation", ped:"Link to pedagogy",
+  variants:"Spellings found in texts", disc:"Discourse type of the context", freq:"Frequency", dist:"Distribution by source",
+  corpus:"Uzbek National Corpus", ctx:"Context", src:"Source column of the dictionary", ctxsrc:"Source of the context",
+  open:"Open", noEq:"No interfixed equivalent is recorded in the other language.", trans:"Translation equivalent (not confirmed by a dictionary source)",
+  appx:(p,n)=>`Appendix 1, part ${p}, row ${n}`, copy:"Copy link", copied:"Copied",
+  close:"Close", synNote:"This unit is a synonym of the main Uzbek unit of a pair. Its English translation coincides with the English unit below, which is paired with the main Uzbek unit.",
+  cModels:"Structural-derivational models", cGroups:"Lexical-semantic groups", cRel:"Types of inter-base relation",
+  cOrig:"Origin", cDisc:"Discourse types", cSrc:"Source abbreviations", cCount:"count",
+  foot:"Data come from Appendix 1 of the dissertation and the research database (Interfiksli_birliklar_bazasi.xlsx). Last updated:"
+ }
+};
+let L = "uz";
+try{ const s = localStorage.getItem("lugat-lang"); if(s==="en"||s==="uz") L=s; }catch(e){}
+const t = k => S[L][k];
+const C = D.codes;
+const tr = (dict, key) => { const v = dict && dict[key]; if(!v) return key || ""; return (L==="en" && v.en) ? v.en : v.uz; };
+
+/* ---------- helpers ---------- */
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const norm = s => String(s||"").normalize("NFC").toLowerCase()
+  .replace(/[‘’ʻʼ'`´]/g,"").replace(/[-–—°\s]/g,"")
+  .replace(/ё/g,"е");
+U.forEach(u => { u._k = norm(u.w) + "|" + norm(u.e) + "|" + norm(u.var||""); u._h = norm(u.w); });
+
+function hl(w, v){
+  const parts = String(w).split("-");
+  const m = /^-([a-z‘’ʼ]+)/i.exec(v||"");
+  const tok = m ? m[1].toLowerCase() : null;
+  const isHyph = /chiziqcha|hyphen/i.test(v||"");
+  let html = "";
+  parts.forEach((p,i) => {
+    if(i>0) html += isHyph ? '<mark>-</mark>' : '<span class="sep">-</span>';
+    const inner = i>0 && i<parts.length-1;
+    if(tok && inner && p.toLowerCase()===tok) html += "<mark>"+esc(p)+"</mark>";
+    else html += esc(p);
+  });
+  if(tok && !/<mark>/.test(html)){
+    // e.g. bosqichma-bosqich : suffix of a segment
+    const i = parts.findIndex((p,ix)=> ix<parts.length-1 && p.toLowerCase().endsWith(tok) && p.length>tok.length);
+    if(i>=0){
+      html = parts.map((p,ix)=>{
+        let s = (ix===i) ? esc(p.slice(0,p.length-tok.length))+"<mark>"+esc(p.slice(-tok.length))+"</mark>" : esc(p);
+        return (ix>0?'<span class="sep">-</span>':"")+s;
+      }).join("");
+    }
+  }
+  return html;
+}
+const eqBadge = et => et==="t" ? `<span class="badge t">${t("eqT")}</span>` : et==="q" ? `<span class="badge q">${t("eqQ")}</span>` : `<span class="badge n">${t("eqN")}</span>`;
+
+/* ---------- static text ---------- */
+function applyStatic(){
+  document.documentElement.lang = L;
+  document.querySelectorAll("[data-i]").forEach(el => el.textContent = t(el.dataset.i));
+  document.getElementById("q").placeholder = t("search");
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang===L));
+  const n = D.meta;
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b>${n.total}</b><span>${t("sUnits")}</span></div>
+     <div class="stat uz"><b>${n.uz}</b><span>${t("sUz")}</span></div>
+     <div class="stat en"><b>${n.en}</b><span>${t("sEn")}</span></div>
+     <div class="stat"><b>${n.pairs}</b><span>${t("sPairs")}</span></div>`;
+  document.getElementById("foot").innerHTML = `${esc(t("foot"))} ${esc(n.built)}. ${esc(n.cite||"")}`;
+  fillSelects();
+}
+function opt(v, label, cur){ return `<option value="${esc(v)}"${v===cur?" selected":""}>${esc(label)}</option>`; }
+function fillSelects(){
+  const f = state;
+  document.getElementById("fLang").innerHTML = opt("",t("allLang"),f.lang)+opt("uz",t("uzOnly"),f.lang)+opt("en",t("enOnly"),f.lang);
+  const cnt = (key) => { const c={}; U.forEach(u=>{ c[u[key]]=(c[u[key]]||0)+1; }); return c; };
+  const mc = cnt("m"), gc = cnt("g"), rc = cnt("r");
+  document.getElementById("fModel").innerHTML = opt("",t("allModel"),f.m) +
+    Object.keys(C.M).filter(k=>mc[k]).map(k=>opt(k, `${k} · ${tr(C.M,k)} (${mc[k]})`, f.m)).join("");
+  document.getElementById("fGroup").innerHTML = opt("",t("allGroup"),f.g) +
+    Object.keys(C.G).filter(k=>gc[k]).map(k=>opt(k, `${k} · ${tr(C.G,k)} (${gc[k]})`, f.g)).join("");
+  document.getElementById("fRel").innerHTML = opt("",t("allRel"),f.r) +
+    Object.keys(rc).sort((a,b)=>rc[b]-rc[a]).map(k=>opt(k, `${tr(C.R,k)} (${rc[k]})`, f.r)).join("");
+  document.getElementById("fEq").innerHTML = opt("",t("allEq"),f.eq)+opt("t",t("eqT"),f.eq)+opt("q",t("eqQ"),f.eq)+opt("n",t("eqN"),f.eq);
+}
+
+/* ---------- list ---------- */
+const state = {q:"", lang:"", m:"", g:"", r:"", eq:"", limit:80, sel:null};
+let results = U;
+function filter(){
+  const q = norm(state.q);
+  results = U.filter(u =>
+    (!state.lang || u.l===state.lang) && (!state.m || u.m===state.m) && (!state.g || u.g===state.g) &&
+    (!state.r || u.r===state.r) && (!state.eq || u.et===state.eq) && (!q || u._k.includes(q)));
+  if(q){ // headword matches first
+    results = results.slice().sort((a,b)=>{
+      const sa = a._h.startsWith(q)?0:a._h.includes(q)?1:2, sb = b._h.startsWith(q)?0:b._h.includes(q)?1:2;
+      return sa-sb;
+    });
+  }
+}
+function renderList(){
+  const el = document.getElementById("list");
+  document.getElementById("count").textContent = t("found")(results.length);
+  if(!results.length){ el.innerHTML = `<div class="empty">${t("none")}</div>`; return; }
+  const shown = results.slice(0, state.limit);
+  el.innerHTML = shown.map(u => `
+    <button type="button" class="row" data-id="${u.id}" aria-current="${u.id===state.sel}">
+      <span class="lang ${u.l}">${u.l==="uz"?t("uzL"):t("enL")}</span>
+      <span style="min-width:0">
+        <span class="hw">${hl(u.w,u.v)}</span>
+        <div class="eqline">${u.e && u.e!=="—" ? "→ "+esc(u.e) : "→ —"}</div>
+      </span>
+      <span class="chips"><span class="chip">${esc(u.m)}</span><span class="chip">${esc(u.g)}</span></span>
+    </button>`).join("") +
+    (results.length>state.limit ? `<button type="button" class="more" id="more">${t("more")(results.length-state.limit)}</button>` : "");
+}
+
+/* ---------- detail ---------- */
+function kv(label, val){ return (val==null || val==="" ) ? "" : `<dt>${esc(label)}</dt><dd>${val}</dd>`; }
+function renderDetail(){
+  const el = document.getElementById("detail");
+  const u = byId[state.sel];
+  if(!u){ el.innerHTML = `<div class="placeholder">${t("pick")}</div>`; el.classList.remove("open"); return; }
+  const other = u.eid && byId[u.eid];
+  let eq;
+  if(other){
+    eq = `<div class="eqcard"><div><span class="lang ${other.l}" style="padding:2px 6px;margin-right:6px">${other.l==="uz"?t("uzL"):t("enL")}</span>
+           <span class="hw">${hl(other.w,other.v)}</span><div style="margin-top:6px">${eqBadge(u.et)}</div></div>
+           <button type="button" class="eqbtn" data-go="${other.id}">${t("open")} →</button></div>`;
+  } else if(u.ref && byId[u.ref]){
+    const o = byId[u.ref];
+    eq = `<p style="margin:0 0 8px">${t("synNote")}</p><div class="eqcard"><div><span class="lang ${o.l}" style="padding:2px 6px;margin-right:6px">${o.l==="uz"?t("uzL"):t("enL")}</span>
+           <span class="hw">${hl(o.w,o.v)}</span></div><button type="button" class="eqbtn" data-go="${o.id}">${t("open")} →</button></div>`;
+  } else {
+    eq = `<p style="margin:0 0 6px">${eqBadge("n")} ${t("noEq")}</p>` +
+         (u.e && u.e!=="—" ? `<dl class="kv">${kv(t("trans"), esc(u.e.replace(/°$/,"")))}</dl>` : "");
+  }
+  const part = u.l==="uz" ? "A" : "B";
+  el.innerHTML = `
+    <button type="button" class="copy closer" id="closeD">✕ ${t("close")}</button>
+    <div class="dhead">
+      <div class="eyebrow">${u.l==="uz"?t("uzName"):t("enName")} · ${esc(u.id)} · ${esc(t("appx")(part,u.n))}</div>
+      <div class="hw" style="margin-top:6px">${hl(u.w,u.v)}</div>
+      <div class="dmeta">
+        <span class="chip">${esc(u.m)} · ${esc(tr(C.M,u.m))}</span>
+        <span class="chip">${esc(u.g)} · ${esc(tr(C.G,u.g))}</span>
+        <span class="chip">${esc(tr(C.R,u.r))}</span>
+        <button type="button" class="copy" id="copyL">${t("copy")}</button>
+      </div>
+    </div>
+    <div class="dbody">
+      <div class="sec"><h3>${t("secStruct")}</h3><dl class="kv">
+        ${kv(t("formula"), esc(L==="en" ? u.m+": "+tr(C.M,u.m) : u.f))}
+        ${kv(t("device"), esc(L==="en" ? u.v.replace(/^chiziqcha$/,"hyphen").replace("bahsli","debatable") : u.v))}
+        ${kv(t("b1"), esc(u.b1))}${kv(t("b2"), esc(u.b2))}
+        ${kv(t("origin"), esc(tr(C.O,u.o)))}
+        ${kv(t("etym"), esc(u.iz))}
+      </dl></div>
+      <div class="sec"><h3>${t("secSem")}</h3><dl class="kv">
+        ${kv(t("group"), esc(u.g+" · "+tr(C.G,u.g)))}
+        ${kv(t("rel"), esc(tr(C.R,u.r)))}
+        ${kv(t("ped"), esc(tr(C.P,u.pa)))}
+      </dl></div>
+      <div class="sec"><h3>${t("secEq")}</h3>${eq}</div>
+      ${u.k ? `<div class="sec"><h3>${t("ctx")}</h3><blockquote>${esc(u.k)}</blockquote>
+          ${u.ks?`<div class="srcnote">${esc(t("ctxsrc"))}: ${esc(u.ks)}</div>`:""}</div>` : ""}
+      <div class="sec"><h3>${t("secUse")}</h3><dl class="kv">
+        ${kv(t("disc"), esc(tr(C.D,u.d)))}
+        ${kv(t("freq"), esc(u.fr) + (u.fri?`<div class="srcnote">${esc(u.fri)}</div>`:""))}
+        ${kv(t("variants"), esc(u.var))}
+        ${kv(t("dist"), esc(L==="en"&&u.distEn?u.distEn:u.dist))}
+        ${kv(t("corpus"), esc(u.c))}
+      </dl></div>
+      <div class="sec"><h3>${t("secSrc")}</h3><dl class="kv">
+        ${kv(t("src"), esc(u.s))}
+      </dl></div>
+    </div>`;
+  if(window.matchMedia("(max-width:900px)").matches) el.classList.add("open");
+  el.scrollTop = 0;
+}
+function select(id, push){
+  state.sel = id;
+  document.querySelectorAll(".row").forEach(r => r.setAttribute("aria-current", r.dataset.id===id));
+  renderDetail();
+  if(push!==false){ try{ history.replaceState(null,"","#"+id); }catch(e){ location.hash=id; } }
+}
+
+/* ---------- codes & about ---------- */
+function renderCodes(){
+  const cnt = (key,val)=>U.filter(u=>u[key]===val).length;
+  const rows = (dict,key,withEx) => Object.keys(dict).map(k => {
+    const n = key ? cnt(key,k) : "";
+    return `<tr><td>${esc(k)}</td><td>${esc(tr(dict,k))}${withEx&&dict[k].ex?`<div class="ex">${esc(dict[k].ex)}</div>`:""}${dict[k].note?`<div class="ex">${esc(L==="en"&&dict[k].noteEn?dict[k].noteEn:dict[k].note)}</div>`:""}</td><td class="n">${n!==""?n:""}</td></tr>`;
+  }).join("");
+  document.getElementById("codes").innerHTML = `
+    <div class="card"><h2>${t("cModels")}</h2><table class="ct">${rows(C.M,"m",true)}</table></div>
+    <div class="card"><h2>${t("cGroups")}</h2><table class="ct">${rows(C.G,"g")}</table></div>
+    <div class="card"><h2>${t("cRel")}</h2><table class="ct">${rows(C.R,"r")}</table></div>
+    <div class="card"><h2>${t("cOrig")}</h2><table class="ct">${rows(C.O,"o")}</table></div>
+    <div class="card"><h2>${t("cDisc")}</h2><table class="ct">${rows(C.D,"d")}</table></div>
+    <div class="card"><h2>${t("cSrc")}</h2><table class="ct">${D.sources.map(s=>`<tr><td>${esc(s[0])}</td><td>${esc(s[1])}</td></tr>`).join("")}</table></div>`;
+}
+function renderAbout(){
+  document.getElementById("about").innerHTML = (D.about[L]||D.about.uz).map(b=>`<div class="card">${b}</div>`).join("");
+}
+
+/* ---------- events ---------- */
+function refresh(){ filter(); renderList(); }
+const debounce = (fn,ms)=>{ let h; return (...a)=>{ clearTimeout(h); h=setTimeout(()=>fn(...a),ms); }; };
+document.getElementById("q").addEventListener("input", debounce(e=>{ state.q=e.target.value; state.limit=80; refresh(); },120));
+[["fLang","lang"],["fModel","m"],["fGroup","g"],["fRel","r"],["fEq","eq"]].forEach(([id,key])=>{
+  document.getElementById(id).addEventListener("change", e=>{ state[key]=e.target.value; state.limit=80; refresh(); });
+});
+document.getElementById("reset").addEventListener("click", ()=>{
+  Object.assign(state,{q:"",lang:"",m:"",g:"",r:"",eq:"",limit:80});
+  document.getElementById("q").value=""; fillSelects(); refresh();
+});
+document.getElementById("list").addEventListener("click", e=>{
+  const more = e.target.closest("#more"); if(more){ state.limit+=120; renderList(); return; }
+  const r = e.target.closest(".row"); if(r) select(r.dataset.id);
+});
+document.getElementById("detail").addEventListener("click", e=>{
+  const g = e.target.closest("[data-go]");
+  if(g){ const id=g.dataset.go; select(id); const row=document.querySelector(`.row[data-id="${id}"]`); if(row) row.scrollIntoView({block:"nearest"}); return; }
+  if(e.target.closest("#closeD")){ document.getElementById("detail").classList.remove("open"); return; }
+  const c = e.target.closest("#copyL");
+  if(c){ const url = location.href.split("#")[0]+"#"+state.sel;
+    (navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(()=>{c.textContent=t("copied");}).catch(()=>{prompt("URL",url);}); }
+});
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{
+  L=b.dataset.lang; try{localStorage.setItem("lugat-lang",L);}catch(e){}
+  applyStatic(); renderList(); renderDetail(); renderCodes(); renderAbout();
+}));
+document.querySelectorAll("nav.tabs button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected", x===b));
+  ["dict","codes","about"].forEach(n=>document.getElementById("tab-"+n).classList.toggle("hidden", n!==b.dataset.tab));
+}));
+document.getElementById("theme").addEventListener("click",()=>{
+  const root=document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme:dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try{localStorage.setItem("lugat-theme",root.dataset.theme);}catch(e){}
+});
+try{ const th=localStorage.getItem("lugat-theme"); if(th) document.documentElement.dataset.theme=th; }catch(e){}
+window.addEventListener("hashchange",()=>{ const id=location.hash.slice(1); if(byId[id]) select(id,false); });
+
+/* ---------- start ---------- */
+const tbEl=document.querySelector(".toolbar");
+const setTb=()=>document.documentElement.style.setProperty("--tb",tbEl.offsetHeight+"px");
+window.addEventListener("resize",setTb); setTimeout(setTb,0);
+applyStatic(); refresh(); renderCodes(); renderAbout();
+const h = location.hash.slice(1);
+if(byId[h]){ select(h,false); const r=document.querySelector(`.row[data-id="${h}"]`); if(r) r.scrollIntoView({block:"center"}); }
+else renderDetail();
+})();
+</script>
+</body>
+</html>
